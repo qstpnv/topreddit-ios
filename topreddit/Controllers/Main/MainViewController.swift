@@ -26,6 +26,7 @@ class MainViewController: BaseViewController {
     
     func setupView() {
         contentTableView.tableFooterView = UIView()
+        contentTableView.remembersLastFocusedIndexPath = true
         contentTableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: "PostTableViewCell")
     }
     
@@ -33,25 +34,23 @@ class MainViewController: BaseViewController {
     //MARK - Methods
     
     func loadData() {
-        let post = Post()
-        post.title = "I just dug this up metal detecting in the middle of nowhere"
-        post.author = "MrDurka"
-        post.date = 1554389834
-        post.thumbnail = "https://b.thumbs.redditmedia.com/85zO359J7oya4Aasuhpkc4-IPEUQT0IbBiMs7S_Q-TQ.jpg"
-        post.fullsizedImage = "https://i.redd.it/7texkfyya3q21.jpg"
-        post.commentsCount = 3965
-        
-        posts.append(post)
-        posts.append(post)
-        posts.append(post)
-        posts.append(post)
-        posts.append(post)
-        
-        contentTableView.reloadData()
+        showWaiting()
+        PostsManager.shared.loadTopPosts { isSuccess in
+            self.hideWaiting()
+            guard let _posts = PostsManager.shared.posts, isSuccess else {
+                self.showOkayAlert(title: "Error", text: "Server internal error")
+                return
+            }
+            
+            self.posts = _posts
+            DispatchQueue.main.async {
+                self.contentTableView.reloadData()
+            }
+        }
     }
     
     func showSelectorAlert(_ imageUrl: String) {
-        let alert = UIAlertController(title: "Choose action", message: "You can open or save full-sized image", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Choose action", message: "You can open or save full-sized image", preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "Open", style: .default, handler: { _ in
             self.open(imageUrl)
@@ -60,6 +59,8 @@ class MainViewController: BaseViewController {
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
             self.save(imageUrl)
         }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -74,12 +75,15 @@ class MainViewController: BaseViewController {
     }
     
     func save(_ imageUrl: String) {
+        showWaiting()
         let url = URL(string: imageUrl)
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
             guard let _data = data, error == nil else { return }
             DispatchQueue.main.async() {
                 guard let newImage = UIImage(data: _data) else { return }
                 UIImageWriteToSavedPhotosAlbum(newImage, nil, nil, nil)
+                self.hideWaiting()
+                self.showOkayAlert(text: "Image saved to your Camera Roll")
             }
         }
         
@@ -100,6 +104,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let item = posts[indexPath.row]
         cell.setupCell(item)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == posts.count - 1 {
+            loadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

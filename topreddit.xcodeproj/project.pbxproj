@@ -18,6 +18,10 @@
 		C158B75822553CE90069F225 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C158B75722553CE90069F225 /* Post.swift */; };
 		C158B75B225554450069F225 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C158B75A225554450069F225 /* UIImageView.swift */; };
 		C158B762225561880069F225 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = C158B761225561880069F225 /* TimeInterval.swift */; };
+		C188CFB522565ED80044E26D /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188CFB422565ED80044E26D /* AlertViewController.swift */; };
+		C188CFB722566F0B0044E26D /* PostsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188CFB622566F0B0044E26D /* PostsResponse.swift */; };
+		C188CFBA225675AD0044E26D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188CFB9225675AD0044E26D /* API.swift */; };
+		C188CFBD225677FC0044E26D /* PostsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188CFBC225677FC0044E26D /* PostsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		C158B75722553CE90069F225 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		C158B75A225554450069F225 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		C158B761225561880069F225 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
+		C188CFB422565ED80044E26D /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		C188CFB622566F0B0044E26D /* PostsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsResponse.swift; sourceTree = "<group>"; };
+		C188CFB9225675AD0044E26D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C188CFBC225677FC0044E26D /* PostsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				C158B74E22553BE70069F225 /* BaseViewController.swift */,
+				C188CFB422565ED80044E26D /* AlertViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -125,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				C158B75622553CD30069F225 /* Models */,
+				C188CFBB225677EF0044E26D /* Managers */,
+				C188CFB9225675AD0044E26D /* API.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -132,7 +143,7 @@
 		C158B75622553CD30069F225 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C158B75722553CE90069F225 /* Post.swift */,
+				C188CFB8225673E70044E26D /* Post */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -144,6 +155,23 @@
 				C158B761225561880069F225 /* TimeInterval.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C188CFB8225673E70044E26D /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				C188CFB622566F0B0044E26D /* PostsResponse.swift */,
+				C158B75722553CE90069F225 /* Post.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		C188CFBB225677EF0044E26D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C188CFBC225677FC0044E26D /* PostsManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,8 +249,12 @@
 				C14AE70F22552FB7000CA424 /* MainViewController.swift in Sources */,
 				C14AE70D22552FB7000CA424 /* AppDelegate.swift in Sources */,
 				C158B74F22553BE70069F225 /* BaseViewController.swift in Sources */,
+				C188CFB522565ED80044E26D /* AlertViewController.swift in Sources */,
+				C188CFBA225675AD0044E26D /* API.swift in Sources */,
+				C188CFBD225677FC0044E26D /* PostsManager.swift in Sources */,
 				C158B75222553C980069F225 /* PostTableViewCell.swift in Sources */,
 				C158B75B225554450069F225 /* UIImageView.swift in Sources */,
+				C188CFB722566F0B0044E26D /* PostsResponse.swift in Sources */,
 				C158B75822553CE90069F225 /* Post.swift in Sources */,
 				C158B762225561880069F225 /* TimeInterval.swift in Sources */,
 			);

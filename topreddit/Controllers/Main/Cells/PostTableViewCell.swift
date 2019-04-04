@@ -15,7 +15,6 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var commentsCountLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var thumbnailHeightConstraint: NSLayoutConstraint!
     
     
     //MARK - Setups
@@ -39,8 +38,7 @@ class PostTableViewCell: UITableViewCell {
         if let _thumbnail = post.thumbnail {
             thumbnailImageView.setImage(url: _thumbnail)
         } else {
-            thumbnailHeightConstraint.constant = 0
-            layoutIfNeeded()
+            thumbnailImageView.image = #imageLiteral(resourceName: "placeholder")
         }
         
         // comments number setup

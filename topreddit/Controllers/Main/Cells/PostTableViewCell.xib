@@ -94,7 +94,6 @@
                 <outlet property="authorLabel" destination="TvR-VD-hdm" id="zLf-3Q-VIr"/>
                 <outlet property="commentsCountLabel" destination="aYw-LU-0hY" id="mSN-oK-fse"/>
                 <outlet property="dateLabel" destination="FI1-kf-GNS" id="Qry-GL-IeX"/>
-                <outlet property="thumbnailHeightConstraint" destination="hRS-ru-bVU" id="9zl-vu-cfe"/>
                 <outlet property="thumbnailImageView" destination="rlR-N5-Hjo" id="ati-ZB-c48"/>
                 <outlet property="titleLabel" destination="dIE-E1-pRD" id="plG-zN-4bq"/>
             </connections>
