@@ -35,7 +35,7 @@ class PostTableViewCell: UITableViewCell {
         }
         
         // thumbnail setup
-        if let _thumbnail = post.thumbnail {
+        if let _thumbnail = post.thumbnail, _thumbnail != "self" {
             thumbnailImageView.setImage(url: _thumbnail)
         } else {
             thumbnailImageView.image = #imageLiteral(resourceName: "placeholder")
